@@ -1,2 +1,13 @@
-# SE1
-YDJSIR's collection of SE1 key points in 2020-Spr.
+# 软件工程与计算Ⅰ-2020春季期末复习材料（Ver. YDJSIR)
+
+这部分内容完全是YDJSIR呕心沥血创作得来，所有外部引用均已在内容中明确标注并指出。
+
+YDJSIR深知自己实力有限，也许这份材料是一个刚不挂科的人的认识总结，但是YDJSIR始终秉承分享的理念。欢迎交流或者批评指正！
+
+~~都快要考试了才搞，YDJSIR是不是实在过于费拉不堪~~
+
+本项目中的所有内容在考试完成后再行补充部分内容，而后会合并汇入这个库中：
+
+https://github.com/NJU-SE-15-share-review/professional-class
+
+这个库也欢迎更多的有志之士加入总结的行列中来！

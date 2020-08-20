@@ -1,10 +1,12 @@
-# 软件工程与计算Ⅰ -GUI，网络与线程
+# 软件工程与计算Ⅰ-GUI，网络与线程
+
+> 本部分对应于PPT 19-20
 
 我想，就这一部分而言，最好的例子莫过于HFJ上面的“程序料理”这个例子了。因而我将以注释的方式展开这一部分，其他部分单独补充。
 
 注意到这里传输的是String这一整个对象，因而用的是`ObjectInputStream`和`ObjectOutputStream`因而没有采用PrintWriter。
 
-> 以下代码均来自https://github.com/bethrobson/Head-First-Java，但是注释显然是YDJSIR写的。
+> 以下代码均来自https://github.com/bethrobson/Head-First-Java ，但是注释显然是YDJSIR写的。
 
 
 
@@ -51,7 +53,7 @@ public class TwoButtons  {
 //        labelButton.addActionListener(this::actionPerformedLabel1);
 //        colorButton.addActionListener(this::actionPerformedLabel2);
        frame.setSize(420,300);
-       frame.setVisible(true);
+       frame.setVisible(true);//千万别忘了
     }
     
     //注意到非静态的内部类中不能有静态方法，但是你可以拥有一个静态内部类
@@ -64,6 +66,50 @@ public class TwoButtons  {
      class ColorButtonListener implements ActionListener {//
      }  // close inner class
    
+}
+```
+
+### GUI中的动画
+
+温馨提示：一定要记得把原来的图案擦掉！以及，每次绘图的时候必须Sleep一下，否则可能出现奇奇怪怪的错误！
+
+```java
+public class Animate {
+    int x = 1;
+    int y = 1;
+
+    public static void main (String[] args) {//}
+
+	/**
+     * 将一个模块运行的主调用方法写到一个名为go的方法里面是惯例
+     */
+    public void go() {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        MyDrawP drawP = new MyDrawP();
+        frame.getContentPane().add(drawP);
+        frame.setSize(500,270);
+        frame.setVisible(true);
+        for (int i = 0; i < 124; i++,x++,y++ ) {
+            x++;
+            drawP.repaint();//你可以调用方法让系统来帮你重新绘制，这一过程是异步的
+            try {
+                Thread.sleep(50);//防止速度过快直接一步到位了或者发生奇怪的错误
+            } catch(Exception ex) { 
+                ex.printStackTrace();//必须有try和catch！防御性编程。但是catch后你可以什么都不做
+            }
+        }
+    }
+
+    //内部类
+    class MyDrawP extends JPanel {
+        public void paintComponent(Graphics g  ) {
+            g.setColor(Color.white);
+            g.fillRect(0,0,500,250);
+            g.setColor(Color.blue);
+            g.fillRect(x,y,500-x*2,250-y*2);
+        }
+    }
 }
 ```
 
@@ -201,50 +247,6 @@ public class DailyAdviceServer
 }
 ```
 
-### GUI中的动画
-
-温馨提示：一定要记得把原来的图案擦掉！以及，每次绘图的时候必须Sleep一下，否则可能出现奇奇怪怪的错误！
-
-```java
-public class Animate {
-    int x = 1;
-    int y = 1;
-
-    public static void main (String[] args) {//}
-
-	/**
-     * 将一个模块运行的主调用方法写到一个名为go的方法里面是惯例
-     */
-    public void go() {
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MyDrawP drawP = new MyDrawP();
-        frame.getContentPane().add(drawP);
-        frame.setSize(500,270);
-        frame.setVisible(true);
-        for (int i = 0; i < 124; i++,x++,y++ ) {
-            x++;
-            drawP.repaint();//你可以调用方法让系统来帮你重新绘制，这一过程是异步的
-            try {
-                Thread.sleep(50);//防止速度过快直接一步到位了或者发生奇怪的错误
-            } catch(Exception ex) { 
-                ex.printStackTrace();//必须有try和catch！防御性编程。但是catch后你可以什么都不做
-            }
-        }
-    }
-
-    //内部类
-    class MyDrawP extends JPanel {
-        public void paintComponent(Graphics g  ) {
-            g.setColor(Color.white);
-            g.fillRect(0,0,500,250);
-            g.setColor(Color.blue);
-            g.fillRect(x,y,500-x*2,250-y*2);
-        }
-    }
-}
-```
-
 ## 补遗拾阙
 
 ### 线程锁，原子化（Synchronized方法关键字与默认的asynchronized情形）
@@ -287,14 +289,21 @@ public class Animate {
 
 GUI反正可以一层层反复套娃，进而得到繁复的结果。
 
-| 名称               | 描述                       | 备注                           |
-| ------------------ | -------------------------- | ------------------------------ |
-| JFrame - 框架      | 可以用来放JPanel           | 可以指定布局，默认是BoxLayout  |
-| JPanel - 面板      | 用来放具体的组件           | 可以指定布局，默认是FlowLayout |
-| JButton - 普通按钮 | 一按下就触发事件并自动复位 |                                |
-| JTextField         | 单行文本                   |                                |
-| JTextArea          |                            |                                |
-|                    |                            |                                |
-|                    |                            |                                |
-|                    |                            |                                |
+| 名称               | 描述                       | 备注                                                         |
+| ------------------ | -------------------------- | ------------------------------------------------------------ |
+| JFrame - 框架      | 可以用来放JPanel           | 可以指定布局，默认是BoxLayout                                |
+| JPanel - 面板      | 用来放具体的组件           | 可以指定布局，默认是FlowLayout                               |
+| JButton - 普通按钮 | 一按下就触发事件并自动复位 |                                                              |
+| JTextField         | 单行文本                   |                                                              |
+| JTextArea          | 多行文本                   |                                                              |
+| JList              | 列表                       |                                                              |
+| JCheckBox          | 复选框                     | 用`isSelected`来判断是否被勾选，用`setSelected`来手动更改状态 |
+| 还有？             |                            |                                                              |
 
+### GUI绘图一览
+
+可以类比LOGO里面那种编程画图的方式。
+
+牢牢把握`setColor`和`fill<某种图形>`（Rect，Oval之类的）就好。注意到这里的setColor是改变笔触的颜色！
+
+如有需要再继续补充。
