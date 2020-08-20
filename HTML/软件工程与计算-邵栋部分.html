@@ -1,0 +1,533 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>软件工程与计算-邵栋部分</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+h2 { counter-increment: h2counter; }
+h2:before {
+  content: counter(h2counter) ".\0000a0\0000a0";
+}
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = ' first-line-indent'><h1><a name="软件工程与计算ⅰ---邵栋部分" class="md-header-anchor"></a><span>软件工程与计算Ⅰ - 邵栋部分</span></h1><blockquote><p><span>本部分内容对应于最后一次课</span></p></blockquote><h2><a name="守破离" class="md-header-anchor"></a><span>守破离</span></h2><h3><a name="软件工程教育组织软件工程体系建设" class="md-header-anchor"></a><span>软件工程教育、组织软件工程体系建设</span></h3><h4><a name="编程和软件工程之间的三个关键区别" class="md-header-anchor"></a><span>编程和软件工程之间的三个关键区别</span></h4><h5><a name="时间" class="md-header-anchor"></a><span>时间 </span></h5><h6><a name="代码的预期寿命从分钟到无限期" class="md-header-anchor"></a><span>代码的预期寿命：从分钟到无限期</span></h6><p><span>代码的预期寿命不仅仅包括它的开发周期与维护周期，还有它的使用周期。</span></p><p><span>像编程作业这样短暂的系统实际上是“仅”⼀个编程问题，就像在⼀个维度上压缩⽴⽅体是⼀个正⽅形⼀样。</span></p><p><span>随着我们考虑软件存在的时间变⻓，改变变得越来越重要。 在⼗年或更⻓时间的跨度中，⼤多数程序依赖性（⽆论是隐 式还是显式，⽐如编译器、操作系统、硬件、⽹络）都可能 会改变。 </span></p><p><strong><span>这是我们区分软件⼯程和编程的根本。</span></strong></p><blockquote><h5><a name="google-2006年升级编译器" class="md-header-anchor"></a><span>Google 2006年升级编译器</span></h5><p><span>为什么要更新：计算成本与安全性问题；</span></p><p><span>升级⾮常痛苦：部分代码库代码对特定编译器版本具有依赖，⽽ 且当时也没有CI系统。</span></p></blockquote><h6><a name="海勒姆定律hyrums-law--有⾜够数量的api⽤户你在api⽂档中承诺的并不重要系统的所有-可观察⾏为都将被某些⼈所依赖" class="md-header-anchor"></a><span>海勒姆定律(Hyrum&#39;s Law)： -有⾜够数量的API⽤户，你在API⽂档中承诺的并不重要：系统的所有 可观察⾏为都将被某些⼈所依赖。</span></h6><blockquote><p><span>BUG什么的是从来都不存在的，只有特性，特性，特性！🐕</span></p></blockquote><h5><a name="人数规模）" class="md-header-anchor"></a><span>人数（规模）</span></h5><p><span>软件工程与编程的差异⼀个维度是时间，另⼀个维度是人数。</span></p><blockquote><p><span>手动关联《人月神话》</span></p><ul><li><span>没有银弹：复杂性是软件⼯程的第⼀属性！ </span></li><li><span>人月神话：沟通与⼈员规模扩⼤的问题。⼈员的增长和软件规模的增⻓带来的复杂度不是线性的。</span></li></ul><p><span>软件的复杂度是内在的，不可消除的。在许多巨型项目中，占据主要开发人员时间的并不是具体的编码部分，因而没有任何工具上的提升能让软件开发效率有数量级上的提升。</span></p></blockquote><h5><a name="博弈各种因素的权衡与取舍）" class="md-header-anchor"></a><span>博弈（各种因素的权衡与取舍）</span></h5><p><span>软件⼯程与编程的另外⼀个不同之处在于：需要作出决策的复杂性及其⻛险。</span></p><ul><li><span>财务成本（例如：⾦钱）</span></li><li><span>资源成本（例如：CPU时间）</span></li><li><span>⼈员成本（例如：⼯程⼯作量）</span></li><li><span>交易成本（例如：采取⾏动需要多少费⽤） </span></li><li><span>机会成本（例如：“不”采取⾏动要损失多少钱） </span></li><li><span>社会成本（例如：这种选择会对整个社会产⽣什么影响）</span></li></ul><h6><a name="决策输入数据驱动文化" class="md-header-anchor"></a><span>决策输入：数据驱动文化 </span></h6><ul><li><span>量化（估算） </span></li><li><span>证据 </span></li><li><span>先例</span></li></ul><p><span>“如果我花两周的时间将此链接列表改为更⾼性能的结构，我 将使⽤多出5GRAM，但要节省2000个CPU。我应该这么做吗？” </span></p><ul><li><span>这个问题不仅取决与RAM和CPU的相对成本，还取决与⼈员成本（⼯程师两周⼯作时间）和机会成本（⼯程师在两周内还能⽣产什么）。</span></li></ul><h4><a name="守破离-n57" class="md-header-anchor"></a><span>守破离</span></h4><h5><a name="守保持保护或维持" class="md-header-anchor"></a><span>守：保持、保护或维持。</span></h5><ul><li><span>建⽴技艺的基础。学⽣应当按照教授复制技术，不做⼀点修改，也不试图花精⼒理解技术背后的原理。 </span></li><li><span>守是⼀个合理的技术基础。 </span></li></ul><h5><a name="破突破打破流派传统进⾏⼀下扩展" class="md-header-anchor"></a><span>破：突破，打破流派传统进⾏⼀下扩展。</span></h5><ul><li><span>反省所学到内容的形式和⽬的，拥有⽐纯粹重复性练习更深⼊的理解。</span></li><li><span>思考这些技术背后的背景。</span></li></ul><h5><a name="离超过或超越" class="md-header-anchor"></a><span>离：超过或超越。 </span></h5><ul><li><span>独创地思考。从关于这⻔技艺的原始思想和背景知识出发有所发展，并基于实际情况来测试发展出的东⻄</span></li></ul><h2><a name="software-engineering-at-google" class="md-header-anchor"></a><span>Software Engineering at Google</span></h2><h3><a name="不是吧不是吧这都会考" class="md-header-anchor"></a><em><span>【不是吧，不是吧，这都会考？】</span></em></h3><p><span>2017年1月31日，arXiv.org，Software Engineering at Google。</span></p><blockquote><p><span>We catalog and describe Google&#39;s key softwareengineering practices.</span></p></blockquote><h3><a name="软件开发" class="md-header-anchor"></a><span>软件开发</span></h3><h4><a name="源码仓库" class="md-header-anchor"></a><span>源码仓库</span></h4><ul><li><span>统一仓库</span></li><li><span>Chrome仓库（开源）</span></li><li><span>Android仓库（开源）</span></li></ul><p><span>所有工程师都可以访问统一仓库（开源仓库自然也可以）。</span></p><ul><li><span>几乎所有的开发活动都发生在仓库的“头部”而非分支，这样有助于尽快识别集成问题所在、极大地减小合并（merge）分支的工作</span>
+<span>量，还可以更快更容易地推出安全修复程序。</span></li><li><span>自动化测试系统频繁工作，通常在每次测试的传递依赖项中任何文件更改后运行。当某次变更更导致测试结果失败时，系统会在几分钟内自动通知变更提交者和评审员。</span></li><li><span>代码所有权。只有在被列出的仓库子树的所有者才能批准对子树的变更。确保每次变更都被了解这个软件的工程师所评审。</span></li></ul><p>&nbsp;</p><h4><a name="构建系统" class="md-header-anchor"></a><span>构建系统</span></h4><p><span>•⾕歌使用分布式系统Blaze来进编译、链接软件以及运⾏测试⽤例。</span></p><p><span>•任何⾕歌的软件⼯程师通常都可以⼗分简单迅捷地构建和测试仓库中的任何软件。</span></p><p><span>•单个的构建步骤必须是“封闭”的，它们仅仅依赖于声明的输⼊。</span></p><p><span>•单个的构建步骤是确定的。 •构建系统是可靠的。 </span></p><p><span>•构建结果，包括中间结果都缓存在云平台上。 </span></p><p><span>•增量重新构建是很快的。 </span></p><p><span>•提交前检查。</span></p><p>&nbsp;</p><h4><a name="代码评审" class="md-header-anchor"></a><span>代码评审</span></h4><p><span>优秀的Web端代码评审⼯具。</span></p><p><span>让代码的编写者选择他们的评审员以防止评审员回复太慢或者极度不愿意赞成变更。</span></p><p><span>⼯程师们被⿎励保持较⼩的单个变更，并最好把⼤的变更分解成⼀系列更⼩的变更，以 便⼀个评审员能够⼀次性更简单地审阅。 </span></p><ul><li><span>⼀种被⿎励的保持变更较⼩的⽅法是使⽤代码检查⼯具，⽤这次变更的⼤⼩标记每次代码评审。 对30-99⾏代码的添加/删除/移除的更改被标记为“中等⼤⼩”，对超过300⾏代码的变更被标记为 越来越贬低的标签，例如“⼤”（300-999）、“极其巨⼤”（1000-1999）等。</span></li></ul><p>&nbsp;</p><h4><a name="测试" class="md-header-anchor"></a><span>测试</span></h4><p><span>所有产品中使⽤的代码都被预期拥有单元测试，并且如果源⽂件在没有 对应的测试时被添加，代码检查⼯具会突出显示。代码评审员通常要求 任何增加新功能的更改都应该增加新的测试来覆盖新功能。部署前的负载测试在⾕歌也是必不可少的。</span></p><p>&nbsp;</p><h4><a name="缺陷追踪" class="md-header-anchor"></a><span>缺陷追踪</span></h4><p><span>一个完善的系统。</span></p><p>&nbsp;</p><h4><a name="编程语言" class="md-header-anchor"></a><span>编程语言</span></h4><p><span>在⾕歌我们强烈⿎励软件⼯程师使⽤⾕歌官⽅批准的五种编程语 ⾔之⼀来编写程序：C++，Java，Python，Go或JavaScript。</span></p><p><span>统一的编程语言与编程风格。</span></p><p><span>过程的通⽤性仍是使开发变得容易的关键：只有⼀组命令来执⾏所有常⻅的软件⼯程任务 （⽐如检查、编辑、构建、测试、评审、提交、⽂件缺陷报告 等），并且相同的命令可以被⽆论什么项⽬或语⾔使⽤。</span></p><p>&nbsp;</p><h4><a name="调试和分析⼯具" class="md-header-anchor"></a><span>调试和分析⼯具</span></h4><p>&nbsp;</p><h4><a name="发布工程" class="md-header-anchor"></a><span>发布工程</span></h4><p><span>对于⼤多数软件来说，发布是经常进⾏的。每周或每两周发布是常⻅的⽬标，有 些团队甚⾄每天发布。通过⾃动化⼤多数普通的发布⼯程任务使其成为可能。</span></p><p><span>Staging服务器（开发团队/极少数用户）→ 临时服务器（详情见下）→ Canary服务器（真实流量）→ 逐步推送到所有服务器</span></p><blockquote><p><span>临时服务器：将来⾃⽣产流量的请求的副本（的⼀部分）发送到临时服务器，⽽ 且将这些相同的请求发送到当前的⽣产服务器以进⾏实际处理。临时服务器的响应被丢 弃，来⾃现场⽣产服务器的响应被发送回⽤户。</span></p></blockquote><p>&nbsp;</p><h4><a name="上线批准" class="md-header-anchor"></a><span>上线批准</span></h4><p><strong><span>任何⽤户可⻅的变更或重⼤设计变更的上线</span></strong><span>都需要来⾃实施变更的核⼼⼯程团队之外的审批。某些特定批准（通常需经过详细审核），需要确保代码合规，符合法律，隐私，安全以 及可靠性⽅⾯的要求（例如具有适当的⾃动监控以检测服务 器中断并⾃动通知相关的⼯程师），以及业务需求等。（注意！后台的小改动可以不用！）</span></p><p>&nbsp;</p><h4><a name="事后剖析" class="md-header-anchor"></a><span>事后剖析</span></h4><p><span>重点是问题，如何在未来避免，⽽不是责任⼈或分摊责任。</span></p><p>&nbsp;</p><h4><a name="软件重构" class="md-header-anchor"></a><span>软件重构</span></h4><p><span>每几年就来一次，确保技术栈及时更新。</span></p><h3><a name="项目管理" class="md-header-anchor"></a><span>项目管理</span></h3><h4><a name="20的时间" class="md-header-anchor"></a><span>20%的时间</span></h4><p><span>⼯程师们被准许可以⽤百分之20的⼯作时间去选择做任何项⽬， 即使没有获得经理或他⼈的批准。</span></p><h4><a name="⽬标与关键成果okr" class="md-header-anchor"></a><span>⽬标与关键成果OKR</span></h4><p><span>更好的解决KPI的单调性。</span></p><h4><a name="项⽬审批" class="md-header-anchor"></a><span>项⽬审批</span></h4><p><span>没有明确的审批流程。各级经理们对他们团队的项⽬负责并承担责任，同时⾏使他们认为合适的⾃由裁定权。</span></p><h4><a name="组织重组" class="md-header-anchor"></a><span>组织重组</span></h4><p>&nbsp;</p><h3><a name="人员管理" class="md-header-anchor"></a><span>人员管理</span></h3><h4><a name="⼯程经理" class="md-header-anchor"></a><span>⼯程经理</span></h4><p><span>唯⼀⼈员管理⻆⾊。⼯程经理通常是出⾃软件⼯程师，他们拥有相当⾼的专业技术能⼒。</span></p><p><span>技术主管和⼯程经理的职能有所区别。工程经理不仅负责选取技术主管，还负责为其选择团队。他们指导和协助 员⼯职业发展，以及做绩效评估（评估来⾃同⾏反馈，⻅下⽂），另 外负责⼀些补偿⽅⾯的事务。他们也负责做⼀些招聘⽅⾯的⼯作。他每个技术主管对⾃⼰项⽬的技术决策都有最终决定权。</span></p><p>&nbsp;</p><h4><a name="软件⼯程师swe" class="md-header-anchor"></a><span>软件⼯程师(SWE)</span></h4><p><span>管理他⼈也不是必需的升职条件。</span></p><p>&nbsp;</p><h4><a name="研究科学家" class="md-header-anchor"></a><span>研究科学家</span></h4><p>&nbsp;</p><h4><a name="⽹站可靠性⼯程师-sre" class="md-header-anchor"></a><span>⽹站可靠性⼯程师 (SRE)</span></h4><p><span>运维</span></p><p>&nbsp;</p><h4><a name="产品经理" class="md-header-anchor"></a><span>产品经理</span></h4><p>&nbsp;</p><h4><a name="项⽬经理--项⽬技术经理" class="md-header-anchor"></a><span>项⽬经理 / 项⽬技术经理</span></h4><h3><a name="办公条件好培训好内部转岗易与灵活的绩效考核与奖励" class="md-header-anchor"></a><span>办公条件好、培训好、内部转岗易与灵活的绩效考核与奖励。</span></h3><p><span>•⼯程师可以给对⽅明确的反馈，通过“同⾏奖⾦”和“kudos”。</span></p><p><span>Google有⼀个⾮常仔细和详细的晋升过程，由⾃⼰或经理提名，⾃我审 查，同⾏评审，经理评价;然后由晋升委员会做出实际决定，结果可以由晋 升上诉委员会进⼀步审查。确保正确的⼈得到晋升⾄关重要，保持对员⼯的正确激励。</span></p><p>&nbsp;</p></div>
+</body>
+</html>
