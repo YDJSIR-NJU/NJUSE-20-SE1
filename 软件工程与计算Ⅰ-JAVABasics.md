@@ -50,6 +50,13 @@ try { f = new FileInputStream(fileName);
 } catch (FileNotFoundException e) { e.printStackTrace();}
 ```
 
+### 万能的正则
+
+```java
+String patternArchive = "^(\\w+\\/?)+(\\.)+((ZIP)|(zip)|(JAR)|(jar))$";
+Pattern.matches(patternDir, item);
+```
+
 
 
 ## 常用的算法
@@ -146,8 +153,6 @@ public static int hammingDistance(int x, int y){
 
 ### TicTacToe & MyMatrix & GoodMap
 
+```java
+// 在场不要犯傻，算法逻辑也就那样，需要多态就考虑下接口/抽象类/父类
 ```
-
-```
-
-### 
